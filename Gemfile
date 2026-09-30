@@ -8,6 +8,8 @@ gem 'thor'
 group :development, :test do
   gem 'debug'
   gem 'minitest'
+  gem 'minitest-mock'
+  gem 'rake'
   gem 'rubocop'
   gem 'ruby-lsp'
 end
