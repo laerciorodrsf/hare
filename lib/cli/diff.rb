@@ -3,6 +3,7 @@
 require 'pastel'
 require_relative '../svn/client'
 require_relative 'ui/header'
+require_relative 'ui/diff'
 
 module CLI
   class Diff
@@ -12,12 +13,10 @@ module CLI
     end
 
     def call
-      UI::Header.print('Diff')
-
       result = @svn.diff
 
       if result[:success]
-        puts @pastel.green(result[:output])
+        UI::Diff.new.print(result[:output])
       else
         puts @pastel.red(result[:output])
       end
