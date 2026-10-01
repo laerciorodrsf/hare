@@ -5,6 +5,7 @@ require_relative 'doctor'
 require_relative 'sync'
 require_relative 'status'
 require_relative 'log'
+require_relative 'diff'
 
 module CLI
   class Commands < Thor
@@ -30,6 +31,12 @@ module CLI
 
     def log
       Log.new.call
+    end
+
+    desc 'diff', 'Show the SVN working copy changes'
+
+    def diff
+      Diff.new.call
     end
   end
 end

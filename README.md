@@ -51,10 +51,10 @@ bundle exec rubocop
 
 ## Roadmap
 
-* [ ] `hare doctor`
-* [ ] `hare sync`
-* [ ] `hare status`
-* [ ] `hare log`
+* [x] `hare doctor`
+* [x] `hare sync`
+* [x] `hare status`
+* [x] `hare log`
 * [ ] `hare diff`
 * [ ] `hare review`
 * [ ] Web interface
