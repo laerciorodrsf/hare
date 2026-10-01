@@ -45,5 +45,19 @@ module SVN
         output: 'SVN not found'
       }
     end
+
+    def log
+      stdout, stderr, status = Open3.capture3('svn', 'log')
+
+      {
+        success: status.success?,
+        output: status.success? ? stdout.strip : stderr.strip
+      }
+    rescue Errno::ENOENT
+      {
+        success: false,
+        output: 'SVN not found'
+      }
+    end
   end
 end

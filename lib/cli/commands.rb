@@ -4,6 +4,7 @@ require 'thor'
 require_relative 'doctor'
 require_relative 'sync'
 require_relative 'status'
+require_relative 'log'
 
 module CLI
   class Commands < Thor
@@ -23,6 +24,12 @@ module CLI
 
     def status
       Status.new.call
+    end
+
+    desc 'log', 'Show the SVN commit history'
+
+    def log
+      Log.new.call
     end
   end
 end
