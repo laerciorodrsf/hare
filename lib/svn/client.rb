@@ -17,5 +17,19 @@ module SVN
     rescue Errno::ENOENT
       nil
     end
+
+    def update
+      stdout, stderr, status = Open3.capture3('svn', 'update')
+
+      {
+        success: status.success?,
+        output: status.success? ? stdout.strip : stderr.strip
+      }
+    rescue Errno::ENOENT
+      {
+        success: false,
+        output: 'SVN not found'
+      }
+    end
   end
 end
