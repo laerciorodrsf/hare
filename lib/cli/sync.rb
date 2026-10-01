@@ -2,6 +2,7 @@
 
 require 'pastel'
 require_relative '../svn/client'
+require_relative 'ui/sync'
 
 module CLI
   class Sync
@@ -11,15 +12,9 @@ module CLI
     end
 
     def call
-      UI::Header.print('Sync')
-
       result = @svn.update
 
-      if result[:success]
-        puts @pastel.green(result[:output])
-      else
-        puts @pastel.red(result[:output])
-      end
+      UI::Sync.new.print(result)
     end
   end
 end
