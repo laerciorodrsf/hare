@@ -14,6 +14,8 @@ module SVN
       return stdout.strip if status.success?
 
       nil
+    rescue Errno::ENOENT
+      nil
     end
   end
 end
