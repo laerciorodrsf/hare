@@ -3,6 +3,7 @@
 require 'thor'
 require_relative 'doctor'
 require_relative 'sync'
+require_relative 'status'
 
 module CLI
   class Commands < Thor
@@ -16,6 +17,12 @@ module CLI
 
     def sync
       Sync.new.call
+    end
+
+    desc 'status', 'Show the SVN working copy status'
+
+    def status
+      Status.new.call
     end
   end
 end
