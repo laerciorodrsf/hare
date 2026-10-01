@@ -19,7 +19,7 @@ module UI
       @filename = nil
       @revision = nil
 
-      puts @pastel.bold(UI::Header.print('Diff'))
+      UI::Header.print('Diff')
 
       output.each_line do |line|
         print_line(line)
@@ -36,15 +36,14 @@ module UI
         @files += 1
         @filename = Regexp.last_match(1)
       when /^={5,}$/
-        # Ignores SVN separator
+        # Ignora separador técnico do SVN.
       when /^--- .+\(revision (\d+)\)/
         @revision = Regexp.last_match(1)
       when /^\+\+\+ .+\(working copy\)/
-        # Ignores: already in print_file_header
+        # Ignora cabeçalho técnico.
       when /^@@/
         print_file_header
         puts @pastel.cyan(line.strip)
-        puts
       when /^\+/
         @additions += 1
         puts @pastel.green("+ #{line[1..].chomp}")
@@ -52,21 +51,8 @@ module UI
         @deletions += 1
         puts @pastel.red("- #{line[1..].chomp}")
       else
-        puts " #{line.chomp}"
+        puts line.chomp
       end
-    end
-
-    def print_summary
-      puts
-      puts @pastel.dim(SEPARATOR)
-
-      summary = []
-
-      summary << "#{@files} #{Helper::UIHelper.pluralize(@files, 'file')} changed"
-      summary << "#{@additions} #{Helper::UIHelper.pluralize(@additions, 'addition')}"
-      summary << "#{@deletions} #{Helper::UIHelper.pluralize(@deletions, 'deletion')}"
-
-      puts summary.join(' . ')
     end
 
     def print_file_header
@@ -77,6 +63,14 @@ module UI
       puts 'local:      working copy'
       puts
       puts @pastel.dim(SEPARATOR)
+    end
+
+    def print_summary
+      puts
+      puts @pastel.dim(SEPARATOR)
+      puts "#{@files} #{Helper::UIHelper.pluralize(@files, 'file')} changed · " \
+        "#{@additions} #{Helper::UIHelper.pluralize(@additions, 'addition')} · " \
+        "#{@deletions} #{Helper::UIHelper.pluralize(@deletions, 'deletion')}"
     end
   end
 end
