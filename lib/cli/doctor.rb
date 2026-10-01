@@ -2,6 +2,7 @@
 
 require 'pastel'
 require_relative '../svn/client'
+require_relative 'ui/header'
 
 module CLI
   class Doctor
@@ -11,6 +12,8 @@ module CLI
     end
 
     def call
+      UI::Header.print('Doctor')
+
       if @svn.installed?
         puts @pastel.green("✓ SVN #{@svn.version}")
       else

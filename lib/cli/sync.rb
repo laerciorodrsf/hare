@@ -11,6 +11,8 @@ module CLI
     end
 
     def call
+      UI::Header.print('Sync')
+
       result = @svn.update
 
       if result[:success]

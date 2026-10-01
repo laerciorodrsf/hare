@@ -2,6 +2,7 @@
 
 require 'pastel'
 require_relative '../svn/client'
+require_relative 'ui/header'
 
 module CLI
   class Status
@@ -11,6 +12,8 @@ module CLI
     end
 
     def call
+      UI::Header.print('Status')
+
       result = @svn.status
 
       if result[:success]

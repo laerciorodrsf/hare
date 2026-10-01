@@ -55,7 +55,7 @@ bundle exec rubocop
 * [x] `hare sync`
 * [x] `hare status`
 * [x] `hare log`
-* [ ] `hare diff`
+* [x] `hare diff`
 * [ ] `hare review`
 * [ ] Web interface
 * [ ] Shared review state
