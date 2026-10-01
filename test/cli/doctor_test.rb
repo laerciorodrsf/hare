@@ -18,7 +18,9 @@ module CLI
         CLI::Doctor.new(svn: @fake_svn).call
       end
 
-      assert_equal "✓ SVN 1.14.5\n", output.first
+      clean_output = output.first.gsub(/\e\[[0-9;]*m/, '')
+
+      assert_equal "✓ SVN 1.14.5\n", clean_output
 
       @fake_svn.verify
     end

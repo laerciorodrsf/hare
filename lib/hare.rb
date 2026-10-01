@@ -2,3 +2,4 @@
 
 require_relative 'svn/client'
 require_relative 'cli/doctor'
+require_relative 'cli/commands'

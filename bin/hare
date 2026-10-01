@@ -3,4 +3,4 @@
 
 require_relative '../lib/hare'
 
-CLI::Doctor.new.call
+CLI::Commands.start(ARGV)
