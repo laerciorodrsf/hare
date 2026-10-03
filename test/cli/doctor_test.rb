@@ -20,7 +20,12 @@ module CLI
 
       clean_output = output.first.gsub(/\e\[[0-9;]*m/, '')
 
-      assert_equal "✓ SVN 1.14.5\n", clean_output
+      expected = <<~OUTPUT
+        🐇 Hare Doctor
+        ✓ SVN 1.14.5
+      OUTPUT
+
+      assert_equal expected, clean_output
 
       @fake_svn.verify
     end

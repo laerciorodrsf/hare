@@ -21,8 +21,13 @@ module CLI
 
       clean_output = output.first.gsub(/\e\[[0-9;]*m/, '')
 
-      assert_equal "------------------------------------------------------------------------\nr2 | laercio | 2026-10-01 | update README\n",
-                   clean_output
+      expected = <<~OUTPUT
+        🐇 Hare Log
+        ------------------------------------------------------------------------
+        r2 | laercio | 2026-10-01 | update README
+      OUTPUT
+
+      assert_equal expected, clean_output
 
       @fake_svn.verify
     end
