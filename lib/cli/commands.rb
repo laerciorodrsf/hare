@@ -6,6 +6,7 @@ require_relative 'sync'
 require_relative 'status'
 require_relative 'log'
 require_relative 'diff'
+require_relative 'info'
 
 module CLI
   class Commands < Thor
@@ -37,6 +38,12 @@ module CLI
 
     def diff
       Diff.new.call
+    end
+
+    desc 'info', 'Show SVN working copy information'
+
+    def info
+      Info.new.call
     end
   end
 end
