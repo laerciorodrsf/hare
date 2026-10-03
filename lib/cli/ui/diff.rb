@@ -36,11 +36,11 @@ module UI
         @files += 1
         @filename = Regexp.last_match(1)
       when /^={5,}$/
-        # Ignora separador técnico do SVN.
+        # Skips
       when /^--- .+\(revision (\d+)\)/
         @revision = Regexp.last_match(1)
       when /^\+\+\+ .+\(working copy\)/
-        # Ignora cabeçalho técnico.
+        # Skips
       when /^@@/
         print_file_header
         puts @pastel.cyan(line.strip)
